@@ -1,0 +1,1 @@
+# skeleton-php-for-bacit-with-sendmail
