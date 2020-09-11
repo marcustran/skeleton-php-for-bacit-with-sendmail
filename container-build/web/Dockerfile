@@ -42,7 +42,8 @@ RUN apt-get update \
  && echo "sendmail_path=/usr/sbin/sendmail -t -i" >> /usr/local/etc/php/conf.d/sendmail.ini \
  && sed --in-place '/#!\/bin\/sh/a\/etc\/init.d\/sendmail start' /usr/local/bin/docker-php-entrypoint \
  # && sed --in-place '/#!/aecho "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint \
- && sed --in-place '/#!\/bin\/sh/aecho "172.21.0.1 localhost.localdomain foobar" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint \
+ && sed --in-place '/#!\/bin\/sh/aecho "localhost localhost.localdomain foobar" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint \
+ && sed --in-place '/#!\/bin\/sh/aecho $HOSTNAME' /usr/local/bin/docker-php-entrypoint \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www
