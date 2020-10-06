@@ -16,9 +16,13 @@ Hvordan "se inn i" i en kontainer (husk at en kontainer utfører eget operativsy
 $ docker container ls
 ```
 (2) Så kan man "gå inn i" kontainer vha. av programmet "bash"
+```
 <cid> ser man under kolonnenavn "CONTAINER ID"
+
 <kontainernavn> man kan også bruke navn under kolonnen "NAMES"
+
 "|" betyr "eller" (på engelsk "or")
+```
 ```console
 $ docker exec -it <kontainernavn | cid> bash 
 ```
