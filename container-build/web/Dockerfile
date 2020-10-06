@@ -37,12 +37,11 @@ RUN apt-get update \
  && sed -i 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/000-default.conf \
  && mv /var/www/html /var/www/public \
  && curl -sS https://getcomposer.org/installer \
-  | php -- --install-dir=/usr/local/bin --filename=composer \
+  | php -- --install-dir=/usr/local/bin --filename=composer \ 
  && echo "AllowEncodedSlashes On" >> /etc/apache2/apache2.conf \ 
  && echo "sendmail_path=/usr/sbin/sendmail -t -i" >> /usr/local/etc/php/conf.d/sendmail.ini \
  && sed --in-place '/#!\/bin\/sh/a\/etc\/init.d\/sendmail start' /usr/local/bin/docker-php-entrypoint \
- # && sed --in-place '/#!/aecho "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint \
- && sed --in-place '/#!\/bin\/sh/aecho "localhost localhost.localdomain foobar" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint \
+ && sed --in-place '/#!\/bin\/sh/aecho "127.0.0.1 localhost localhost.localdomain foobar" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint \
  && sed --in-place '/#!\/bin\/sh/aecho $HOSTNAME' /usr/local/bin/docker-php-entrypoint \
  && rm -rf /var/lib/apt/lists/*
 
