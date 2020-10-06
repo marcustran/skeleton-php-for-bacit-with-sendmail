@@ -41,7 +41,7 @@ RUN apt-get update \
  && echo "AllowEncodedSlashes On" >> /etc/apache2/apache2.conf \ 
  && echo "sendmail_path=/usr/sbin/sendmail -t -i" >> /usr/local/etc/php/conf.d/sendmail.ini \
  && sed --in-place '/#!\/bin\/sh/a\/etc\/init.d\/sendmail start' /usr/local/bin/docker-php-entrypoint \
- && sed --in-place '/#!\/bin\/sh/aecho "127.0.0.1 localhost localhost.localdomain foobar" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint \
+ && sed --in-place '/#!\/bin\/sh/aecho "127.0.0.1 localhost localhost.localdomain foobar" > /etc/hosts' /usr/local/bin/docker-php-entrypoint \
  && sed --in-place '/#!\/bin\/sh/aecho $HOSTNAME' /usr/local/bin/docker-php-entrypoint \
  && rm -rf /var/lib/apt/lists/*
 
