@@ -1,0 +1,2 @@
+Run the sql script then enjoy the site :)
+Work in progress have not done the front end part well but all functionality should be there.
